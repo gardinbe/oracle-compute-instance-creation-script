@@ -11,4 +11,8 @@ A JS script that continuously attempts to create an Oracle free tier compute ins
 5. Close dev tools, make sure your computer doesn't go to sleep, and pray for the next few hours
 
 ## Notes
-You can change the interval duration between clicks by changing the value of the variable `INTERVAL_DURATION` (default is 30s).
+Filter logs with '***' to only show outputs from this script.
+
+It's advised to close dev tools while the script is running, as over long periods of time it may crash (Oracle's fault).
+
+You can change the interval duration between clicks by changing the value of the variable `INTERVAL_DURATION` - default is 30 (seconds).

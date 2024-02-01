@@ -73,11 +73,15 @@ console.info(
 	logStyle("#e0b414")
 );
 console.info(
-	`%c *** Filter logs with '***' to only show outputs from this script. *** `,
+	"%c *** Filter logs with '***' to only show outputs from this script. *** ",
 	logStyle("#f0dd99")
 );
 console.info(
-	`%c *** It's advised to close devtools while the script is running, as over long periods of time it may crash (Oracle's fault). *** `,
+	"%c *** It's advised to close dev tools while the script is running, as over long periods of time it may crash (Oracle's fault). *** ",
+	logStyle("#f0dd99")
+);
+console.info(
+	"%c *** You can change the interval duration between clicks by changing the value of the variable `INTERVAL_DURATION` - default is 30 (seconds). *** ",
 	logStyle("#f0dd99")
 );
 
@@ -103,7 +107,7 @@ let countdown = countdownDuration();
 void setInterval(() => {
 	if (countdown > 0) {
 		statusElmt.style.backgroundColor = "#00688c";
-		statusElmt.innerHTML = `Clicking again in <b>${countdown} seconds</b>`;
+		statusElmt.innerHTML = `Clicking in <b>${countdown} seconds</b>`;
 		countdown--;
 		return;
 	}
