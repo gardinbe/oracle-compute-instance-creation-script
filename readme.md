@@ -15,4 +15,4 @@ Filter logs with '***' to only show outputs from this script.
 
 It's advised to close dev tools while the script is running, as over long periods of time it may crash (Oracle's fault).
 
-You can change the interval duration between clicks by changing the value of the variable `INTERVAL_DURATION` - default is 30 (seconds).
+You can change the interval duration between clicks on the fly by changing the value of the variable `INTERVAL_DURATION` - default is 30 (seconds).

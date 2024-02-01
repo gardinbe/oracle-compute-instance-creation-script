@@ -81,7 +81,7 @@ console.info(
 	logStyle("#f0dd99")
 );
 console.info(
-	"%c *** You can change the interval duration between clicks by changing the value of the variable `INTERVAL_DURATION` - default is 30 (seconds). *** ",
+	"%c *** You can change the interval duration between clicks on the fly by changing the value of the variable `INTERVAL_DURATION` - default is 30 (seconds). *** ",
 	logStyle("#f0dd99")
 );
 
