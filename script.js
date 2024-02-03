@@ -1,6 +1,6 @@
 /**
- * Find the 'compute' iframe window within the document if it
- * isn't already the current window in devtools.
+ * Find the 'compute' iframe window within the document if it isn't
+ * already the current window in devtools.
  */
 const computeWindow = document.querySelector("#compute-wrapper")
 	? window
@@ -21,22 +21,21 @@ if (!headerElmt)
 	throw new Error("Failed to find header element");
 
 /**
- * Create a new iframe to cloud.oracle.com, insert and hide it in
- * the 'compute' iframe's document, and then periodically refresh
- * it.
+ * Create a new window to cloud.oracle.com, and then periodically
+ * refresh it.
  * 
  * We need to periodically regenerate your session token as it
  * will probably expire too soon - this script might be running
  * for a long time!
  */
-const sessionIframe = document.createElement("iframe");
-sessionIframe.style.display = "none";
-sessionIframe.src = "https://cloud.oracle.com";
-computeWindow.document.body.append(sessionIframe);
-const sessionWindow = sessionIframe.contentWindow;
+const sessionWindow = window.open(
+	"https://cloud.oracle.com",
+	"_blank",
+	"height=400,width=400;popup=true"
+);
 
 //create the status bar
-const statusElmt = computeWindow.document.createElement("div");
+const statusElmt = document.createElement("div");
 statusElmt.setAttribute("style", `
 	z-index: 9999999999999;
 	position: fixed;
@@ -73,6 +72,10 @@ console.info(
 	logStyle("#e0b414")
 );
 console.info(
+	"%c *** DO NOT CLOSE THE POPUP WINDOW! *** ",
+	logStyle("#ff4d4d")
+);
+console.info(
 	"%c *** Filter logs with '***' to only show outputs from this script. *** ",
 	logStyle("#f0dd99")
 );
@@ -101,7 +104,7 @@ const countdownDuration = () => Math.round(INTERVAL_DURATION);
 let countdown = countdownDuration();
 
 /**
- * Interval to click the 'Create' button and reload the new tab
+ * Interval to click the 'Create' button and reload the new window
  * every `INTERVAL_DURATION` milliseconds.
  */
 void setInterval(() => {

@@ -11,6 +11,8 @@ A JS script that continuously attempts to create an Oracle free tier compute ins
 5. Close dev tools, make sure your computer doesn't go to sleep, and pray for the next few hours
 
 ## Notes
+**DO NOT CLOSE THE POPUP WINDOW!**
+
 Filter logs with '***' to only show outputs from this script.
 
 It's advised to close dev tools while the script is running, as over long periods of time it may crash (Oracle's fault).
