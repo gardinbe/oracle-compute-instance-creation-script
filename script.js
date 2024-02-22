@@ -20,6 +20,11 @@ const headerElmt = computeWindow.document.querySelector(".oui-savant__Panel--Hea
 if (!headerElmt)
 	throw new Error("Failed to find header element");
 
+const adElmts = computeWindow.document.querySelectorAll(".oui-savant__card-radio-option");
+if (adElmts.length == 0)
+	throw new Error("Failed to find availability domains elements");
+
+
 /**
  * Create a new window to cloud.oracle.com, and then periodically
  * refresh it.
@@ -33,6 +38,19 @@ const sessionWindow = window.open(
 	"_blank",
 	"height=400,width=400;popup=true"
 );
+
+/**
+ * Select another availability domain if more then one is available
+ */
+let TRY_DIFFERENT_AD = true;
+let lastAd = 0;
+
+const tryNextAvailabilityDomain = () => {
+	if (TRY_DIFFERENT_AD && adElmts.length > 0) {
+		adElmts[lastAd].click();
+		lastAd = (lastAd + 1) % adElmts.length; 
+	}
+}
 
 //create the status bar
 const statusElmt = document.createElement("div");
@@ -116,6 +134,7 @@ void setInterval(() => {
 	}
 
 	sessionWindow.location.reload();
+	tryNextAvailabilityDomain();
 	createBtn.click();
 	statusElmt.style.backgroundColor = "#44bd50";
 	statusElmt.innerHTML = `Create clicked!`;
